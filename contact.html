@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Sunrise Bake House</title>
+<meta name="description" content="Contact Sunrise Bake House for orders and enquiries.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header>
+  <a href="index.html"><strong>Sunrise Bake House</strong></a>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <h1>Contact Us</h1>
+  <p>Shop No. 12, Station Road, Thane West, Maharashtra - 400601 (Fictional address)</p>
+  <p>Phone: +91 98XXX XXXXX (Fictional) | Hours: 8 AM - 9 PM</p>
+
+  <form id="contactForm" novalidate>
+    <div id="formMessage" role="status" aria-live="polite"></div>
+
+    <label for="name">Your Name *</label>
+    <input type="text" id="name" name="name" required aria-describedby="nameError" placeholder="Example: Shikha">
+    <p class="error" id="nameError"></p>
+
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" required aria-describedby="phoneError" placeholder="Example: 9876543210">
+    <p class="error" id="phoneError"></p>
+
+    <label for="service">What do you want to order?</label>
+    <select id="service" name="service">
+      <option value="Custom Cake">Custom Cake</option>
+      <option value="Fresh Breads">Fresh Breads</option>
+      <option value="Snacks & Pastries">Snacks &amp; Pastries</option>
+      <option value="Bulk Order">Bulk Order</option>
+    </select>
+
+    <label for="message">Your Message *</label>
+    <textarea id="message" name="message" rows="4" required aria-describedby="messageError" placeholder="Example: I want a chocolate cake for Saturday"></textarea>
+    <p class="error" id="messageError"></p>
+
+    <button type="submit" class="btn">Send Message</button>
+    <p>This is a demo form. Data is not sent anywhere.</p>
+  </form>
+</main>
+
+<footer>
+  <p>Sunrise Bake House - Fictional bakery for learning project</p>
+  <p><a href="contact.html">Contact Us</a></p>
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  let valid = true;
+  const name = document.getElementById('name');
+  const phone = document.getElementById('phone');
+  const message = document.getElementById('message');
+  document.getElementById('nameError').textContent = '';
+  document.getElementById('phoneError').textContent = '';
+  document.getElementById('messageError').textContent = '';
+
+  if(name.value.trim() === ''){ document.getElementById('nameError').textContent = 'Error: Please enter your name.'; valid = false; }
+  if(phone.value.trim().length < 10){ document.getElementById('phoneError').textContent = 'Error: Please enter a valid 10-digit phone number.'; valid = false; }
+  if(message.value.trim() === ''){ document.getElementById('messageError').textContent = 'Error: Please enter your message.'; valid = false; }
+
+  if(valid){
+    document.getElementById('formMessage').innerHTML = '<p class="success">Thank you! Your message has been received. We will call you back within 2 hours.</p>';
+    this.reset();
+  }
+});
+</script>
+</body>
+</html>
